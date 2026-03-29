@@ -8,19 +8,11 @@ export function AppView({ appId, onClose }) {
   const app = APPS.find((a) => a.id === appId);
 
   const isInternalOrInsecure = useMemo(() => {
-    if (!app?.url) return false;
+    if (!app?.id) return false;
     
-    // Check for internal IP ranges
-    const isInternalIP = app.url.includes('192.168.') || 
-                         app.url.includes('10.') || 
-                         app.url.includes('127.0.0.1') || 
-                         app.url.includes('localhost');
-                         
-    // Check for Mixed Content (HTTPS page trying to load HTTP iframe)
-    const isMixedContent = window.location.protocol === 'https:' && app.url.startsWith('http://');
-    
-    return isInternalIP || isMixedContent;
-  }, [app?.url]);
+    // Solo TaleHub debe mostrar el fallback por ahora
+    return app.id === 'talehub';
+  }, [app?.id]);
 
   useEffect(() => {
     setIsLoading(true); // Reset loading state on app change
