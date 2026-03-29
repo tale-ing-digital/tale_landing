@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250">
+  <defs>
+    <linearGradient id="grad-taledownload" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00c9ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#01053a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect fill="url(#grad-taledownload)" width="400" height="250"/>
+  <circle cx="86" cy="100" r="30" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+  <circle cx="200" cy="100" r="30" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+  <circle cx="314" cy="100" r="30" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+  <path d="M 200 60 L 200 110 M 180 95 L 200 110 L 220 95" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <text x="200" y="220" font-size="16" fill="rgba(255,255,255,0.8)" text-anchor="middle" font-family="Inter" font-weight="500">TaleDownload</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250">
+  <defs>
+    <linearGradient id="grad-talesingroom" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00c9ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#01053a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect fill="url(#grad-talesingroom)" width="400" height="250"/>
+  <rect x="100" y="80" width="70" height="70" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" rx="4"/>
+  <rect x="190" y="80" width="70" height="70" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" rx="4"/>
+  <rect x="145" y="160" width="110" height="40" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" rx="4"/>
+  <path d="M 110 95 L 155 95" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+  <path d="M 200 95 L 245 95" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+  <text x="200" y="220" font-size="16" fill="rgba(255,255,255,0.8)" text-anchor="middle" font-family="Inter" font-weight="500">Tale Singroom</text>
+</svg>
