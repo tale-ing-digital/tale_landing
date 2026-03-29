@@ -41,13 +41,16 @@ export function IframePreview({ app, isActive }) {
       {/* Abstract Mockup Content */}
       <div className="absolute inset-0 pt-10 p-4 flex flex-col justify-center items-center">
         {isActive ? (
-          <div className="flex flex-col items-center gap-3 animate-pulse">
-            <TerminalSquare size={32} className="text-cyan" strokeWidth={1.5} />
-            <div className="text-xs text-navy dark:text-cyan font-medium uppercase tracking-widest">
-              Iniciando entorno seguro...
+          <div className="flex flex-col items-center gap-3 animate-pulse text-center">
+            <TerminalSquare size={32} className="text-cyan mb-1" strokeWidth={1.5} />
+            <div className="text-[10px] text-navy dark:text-cyan font-bold uppercase tracking-widest max-w-[200px]">
+              Accediendo a {app.name}...
             </div>
-            <div className="w-32 h-1 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden mt-2">
-              <div className="h-full w-1/2 bg-cyan rounded-full animate-pulse"></div>
+            <div className="text-[9px] text-slate-400 dark:text-slate-500 font-medium leading-tight max-w-[180px]">
+              Solo accesible desde la Red Interna de Tale
+            </div>
+            <div className="w-32 h-1 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden mt-1 text-center">
+              <div className="h-full w-2/3 bg-cyan rounded-full animate-pulse mx-auto"></div>
             </div>
           </div>
         ) : (
