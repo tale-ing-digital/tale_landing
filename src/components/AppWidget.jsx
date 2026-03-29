@@ -11,8 +11,8 @@ export function AppWidget({ app, isActive, onAppAction }) {
       onClick={() => onAppAction(app.id, 'open')}
       className={`group relative flex flex-col rounded-3xl transition-all duration-500 cursor-pointer ${
         isActive
-          ? 'bg-white shadow-xl shadow-cyan/15 ring-1 ring-cyan/30 transform -translate-y-1 scale-105 dark:bg-slate-800 dark:ring-cyan/50'
-          : 'glass dark:glass-dark hover:shadow-lg hover:bg-white/80 dark:hover:bg-slate-700/80 hover:-translate-y-1'
+          ? 'bg-white shadow-2xl shadow-cyan/10 ring-1 ring-cyan/20 transform -translate-y-1 scale-105 dark:bg-slate-800 dark:ring-cyan/50'
+          : 'glass dark:glass-dark hover:shadow-xl hover:shadow-slate-200/50 hover:bg-white dark:hover:bg-slate-700/80 hover:-translate-y-1 hover:border-slate-300'
       }`}
     >
       <IframePreview app={app} isActive={isActive} />
