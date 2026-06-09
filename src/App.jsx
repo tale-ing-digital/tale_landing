@@ -7,10 +7,12 @@ import './styles/globals.css';
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Check localStorage first, then system preference
+    // Check localStorage first
     const stored = localStorage.getItem('theme-mode');
     if (stored) return stored === 'dark';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Default to LIGHT mode for new users, ignoring system preference as requested
+    return false;
   });
 
   const [selectedApp, setSelectedApp] = useState(null);
