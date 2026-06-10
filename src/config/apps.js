@@ -60,6 +60,6 @@ export const APPS = [
     icon: Calendar,
     env: 'PROD',
     status: 'online',
-    url: null, // Próximamente en producción
+    url: 'https://signroom.taleconstructora.com',
   },
 ];
