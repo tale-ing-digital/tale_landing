@@ -1,11 +1,57 @@
 import { useState, useEffect } from 'react';
+import { broadcastResponseToMainFrame } from '@azure/msal-browser/redirect-bridge';
 import { Header } from './components/Header';
 import { Portal } from './components/Portal';
-import { AppView } from './components/AppView';
 import { Footer } from './components/Footer';
 import './styles/globals.css';
 
+const AUTH_REDIRECT_PATH = '/auth/redirect';
+
+function getPathname() {
+  if (typeof window === 'undefined') return '/';
+
+  return window.location.pathname.replace(/\/$/, '') || '/';
+}
+
+function AuthRedirectCallback() {
+  useEffect(() => {
+    let closed = false;
+
+    const closePopup = () => {
+      if (closed) return;
+      closed = true;
+
+      try {
+        window.close();
+      } catch {
+        // ignore
+      }
+    };
+
+    broadcastResponseToMainFrame().finally(closePopup).catch(() => {
+      closePopup();
+    });
+  }, []);
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-navy text-white px-6">
+      <div className="max-w-md text-center">
+        <div className="mx-auto mb-6 h-16 w-16 rounded-2xl bg-cyan/15 border border-cyan/30 flex items-center justify-center">
+          <span className="text-cyan text-2xl font-bold">T</span>
+        </div>
+        <h1 className="text-2xl font-semibold mb-3">Procesando autenticación</h1>
+        <p className="text-white/70 text-sm leading-relaxed">
+          Estamos recibiendo la respuesta de Microsoft y devolviéndola al portal principal.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
+  const pathname = getPathname();
+  const isAuthRedirect = pathname === AUTH_REDIRECT_PATH;
+
   const [isDarkMode, setIsDarkMode] = useState(() => {
     // Check localStorage first
     const stored = localStorage.getItem('theme-mode');
@@ -14,8 +60,6 @@ export default function App() {
     // Default to LIGHT mode for new users, ignoring system preference as requested
     return false;
   });
-
-  const [selectedApp, setSelectedApp] = useState(null);
 
   useEffect(() => {
     // Update localStorage and document class
@@ -27,9 +71,9 @@ export default function App() {
     setIsDarkMode(!isDarkMode);
   };
 
-  const handleCloseApp = () => {
-    setSelectedApp(null);
-  };
+  if (isAuthRedirect) {
+    return <AuthRedirectCallback />;
+  }
 
   return (
     <div
@@ -45,14 +89,8 @@ export default function App() {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
-        {selectedApp ? (
-          <AppView appId={selectedApp} onClose={handleCloseApp} />
-        ) : (
-          <>
-            <Portal onAppSelect={setSelectedApp} />
-            <Footer />
-          </>
-        )}
+        <Portal />
+        <Footer />
       </div>
 
       {/* Status indicator (optional) */}
