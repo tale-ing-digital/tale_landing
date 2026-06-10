@@ -1,14 +1,8 @@
-import { Shield, TerminalSquare } from 'lucide-react';
-
-export function IframePreview({ app, isActive }) {
+export function IframePreview({ app }) {
   const Icon = app.icon;
 
   return (
-    <div
-      className={`relative w-full h-48 rounded-t-3xl overflow-hidden transition-all duration-500 ${
-        isActive ? 'bg-white dark:bg-slate-800' : 'bg-slate-50 dark:bg-slate-900/40'
-      }`}
-    >
+    <div className="relative w-full h-48 rounded-t-3xl overflow-hidden transition-all duration-500 bg-slate-50 dark:bg-slate-900/40">
       {/* Top Secure Bar */}
       <div className="absolute top-0 left-0 w-full h-10 px-4 flex items-center justify-between bg-slate-100/80 dark:bg-slate-800/90 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-700/50 z-20">
         <div className="flex items-center gap-2">
@@ -40,29 +34,17 @@ export function IframePreview({ app, isActive }) {
 
       {/* Abstract Mockup Content */}
       <div className="absolute inset-0 pt-10 p-4 flex flex-col justify-center items-center">
-        {isActive ? (
-          <div className="flex flex-col items-center gap-3 animate-pulse text-center">
-            <TerminalSquare size={32} className="text-cyan mb-1" strokeWidth={1.5} />
-            <div className="text-[10px] text-navy dark:text-cyan font-bold uppercase tracking-widest max-w-[200px]">
-              Accediendo a {app.name}...
-            </div>
-            <div className="text-[9px] text-slate-400 dark:text-slate-500 font-medium leading-tight max-w-[180px]">
-              Solo accesible desde la Red Interna de Tale
-            </div>
-            <div className="w-32 h-1 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden mt-1 text-center">
-              <div className="h-full w-2/3 bg-cyan rounded-full animate-pulse mx-auto"></div>
-            </div>
-          </div>
-        ) : (
-          <div className="w-full h-full border border-slate-200/50 dark:border-slate-700/50 bg-white/30 dark:bg-slate-700/30 rounded-lg block opacity-50 hover:opacity-100 transition-opacity duration-500 shadow-inner">
-            {/* Minimalist wireframe representing the app */}
-            <div className="absolute top-4 left-4 right-4 h-5 bg-slate-100 dark:bg-slate-600 rounded-md"></div>
-            <div className="absolute top-14 left-4 w-1/3 bottom-4 bg-slate-100/50 dark:bg-slate-600/50 rounded-md"></div>
-            <div className="absolute top-14 right-4 w-1/2 h-1/2 bg-slate-100/50 dark:bg-slate-600/50 rounded-md"></div>
-            <div className="absolute bottom-4 right-4 w-1/2 h-8 bg-cyan/5 dark:bg-cyan/10 rounded-md"></div>
-            <Icon size={48} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-slate-200 dark:text-slate-600" strokeWidth={1} />
-          </div>
-        )}
+        <div className="w-full h-full border border-slate-200/50 dark:border-slate-700/50 bg-white/30 dark:bg-slate-700/30 rounded-lg block opacity-50 group-hover:opacity-100 transition-opacity duration-500 shadow-inner">
+          <div className="absolute top-4 left-4 right-4 h-5 bg-slate-100 dark:bg-slate-600 rounded-md" />
+          <div className="absolute top-14 left-4 w-1/3 bottom-4 bg-slate-100/50 dark:bg-slate-600/50 rounded-md" />
+          <div className="absolute top-14 right-4 w-1/2 h-1/2 bg-slate-100/50 dark:bg-slate-600/50 rounded-md" />
+          <div className="absolute bottom-4 right-4 w-1/2 h-8 bg-cyan/5 dark:bg-cyan/10 rounded-md" />
+          <Icon
+            size={48}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-slate-200 dark:text-slate-600"
+            strokeWidth={1}
+          />
+        </div>
       </div>
 
       {/* Decorative gradient overlay at bottom */}

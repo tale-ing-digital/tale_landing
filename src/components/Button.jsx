@@ -1,4 +1,12 @@
-export function Button({ children, variant = 'primary', onClick, className = '', disabled = false }) {
+export function Button({
+  children,
+  variant = 'primary',
+  onClick,
+  className = '',
+  disabled = false,
+  href,
+  ...props
+}) {
   const baseStyle =
     'btn-base px-5 py-2.5 text-sm font-medium focus:ring-2 focus:ring-cyan/50 focus:ring-offset-2 focus:ring-offset-white disabled:opacity-50 disabled:cursor-not-allowed';
 
@@ -11,12 +19,24 @@ export function Button({ children, variant = 'primary', onClick, className = '',
       'bg-transparent text-slate-600 hover:text-navy hover:bg-slate-100/50 dark:text-slate-300 dark:hover:text-cyan dark:hover:bg-slate-900/50',
   };
 
+  const classes = `${baseStyle} ${variants[variant]} ${className}`;
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={classes}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <button
-      onClick={onClick}
-      disabled={disabled}
-      className={`${baseStyle} ${variants[variant]} ${className}`}
-    >
+    <button onClick={onClick} disabled={disabled} className={classes} {...props}>
       {children}
     </button>
   );
