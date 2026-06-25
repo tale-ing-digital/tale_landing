@@ -38,7 +38,7 @@ export const APPS = [
     icon: Activity,
     env: 'PROD',
     status: 'online',
-    url: 'https://insightanalytics.taleconstructora.com',
+    url: 'https://insightanalytics.talespace.pe',
   },
   {
     id: 'taledownload',
